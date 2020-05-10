@@ -9,4 +9,15 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="cadastramento">cadastramento</string>
+    <string name="consulta_por_c_digo">consulta por código</string>
+    <string name="listar_todos">listar todos</string>
+    <string name="exclus_o">exclusão</string>
+    <string name="altera_o_de_dados">alteração de dados</string>
+    <string name="hello_second_frag">hello_second_frag</string>
+    <string name="digite_uma_id">Digite uma ID</string>
+    <string name="digite_um_nome">Digite um nome</string>
+    <string name="digite_o_valor_da_mensalidade">Digite o valor da mensalidade</string>
+    <string name="digite_o_debito_total">Digite o debito total</string>
+    <string name="digite_o_telefone">Digite o telefone</string>
 </resources>

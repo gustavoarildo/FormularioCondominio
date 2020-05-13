@@ -35,11 +35,13 @@
         android:id="@+id/button_ConsultaPorCódigo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginBottom="200dp"
+        android:layout_marginBottom="320dp"
         android:text="@string/consulta_por_c_digo"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/editText_Identificacao"
+        app:layout_constraintTop_toBottomOf="@+id/button_first"
+        app:layout_constraintVertical_bias="0.06" />
 
     <Button
         android:id="@+id/button_ListarTodos"
@@ -119,10 +121,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="@string/digite_o_telefone"
-        android:inputType="phone"
+        android:inputType="number"
         app:layout_constraintEnd_toEndOf="@+id/editText_Nome"
-        app:layout_constraintTop_toBottomOf="@+id/editText_Nome"
-        android:autofillHints="" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_Nome" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

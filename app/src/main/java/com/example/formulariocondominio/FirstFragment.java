@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -24,6 +26,8 @@ public class FirstFragment extends Fragment {
     EditText edtTELEFONE;
     EditText edtMENSALIDADE;
     EditText edtDEBITOTOTAL;
+
+    //ListView listViewResponsaveisFinanceiros;
 
 
 
@@ -45,7 +49,12 @@ public class FirstFragment extends Fragment {
         edtMENSALIDADE = (EditText)view.findViewById(R.id.editText_Mensalidade);
         edtDEBITOTOTAL = (EditText)view.findViewById(R.id.editText_DebitoTotal);
 
+        //listViewResponsaveisFinanceiros = (ListView) view.findViewById(R.id.ListView_ListarTodos);
 
+
+        //ArrayAdapter<ResponsavelFinanceiro> adapter = new ArrayAdapter<ResponsavelFinanceiro>(this.getContext(), android.R.layout.simple_list_item_1,listResponsaveisFinanceiros);
+
+       // listViewResponsaveisFinanceiros.setAdapter(adapter);
 
 
         view.findViewById(R.id.button_first).setOnClickListener(new View.OnClickListener() {
@@ -63,6 +72,7 @@ public class FirstFragment extends Fragment {
                 try {
 
                     boolean achei = false;
+                    boolean idlistado = false;
                     for (int i = 0; i < listResponsaveisFinanceiros.size(); i++) {
                         ResponsavelFinanceiro rf = (ResponsavelFinanceiro) listResponsaveisFinanceiros.get(i);
                         if (rf.getId() == (Integer.parseInt(edtID.getText().toString()))  ) {
@@ -76,13 +86,14 @@ public class FirstFragment extends Fragment {
                             edtDEBITOTOTAL.setText( String.valueOf(rf.getDebitoTotal()));
 
                             achei = false;
+                            idlistado = true;
                         }
                     } // for
-                    if(listResponsaveisFinanceiros.size()>0) {
+                    if(listResponsaveisFinanceiros.size()>0 && idlistado == true) {
                         exibeTextoNaTela("CONSULTA POR CODIGO BEM SUCEDIDA, DADOS EXIBIDOS NOS CAMPOS");
                     }
                     else{
-                        exibeTextoNaTela("LISTA ESTA VAZIA");
+                        exibeTextoNaTela("LISTA NÃO POSSUI ESSE ID");
                     }
                 }
                 catch (Exception e){
@@ -104,8 +115,24 @@ public class FirstFragment extends Fragment {
                             Double.parseDouble(edtMENSALIDADE.getText().toString()),
                             Double.parseDouble(edtDEBITOTOTAL.getText().toString())
                     );
-                    listResponsaveisFinanceiros.add(novo);
-                    exibeTextoNaTela("CADASTRAMENTO BEM SUCEDIDO");
+
+                    boolean achei = false;
+                    for (int i = 0; i < listResponsaveisFinanceiros.size(); i++) {
+                        ResponsavelFinanceiro rf = (ResponsavelFinanceiro) listResponsaveisFinanceiros.get(i);
+                        if (rf.getId() == (Integer.parseInt(edtID.getText().toString()))) {
+                            achei = true;
+                        }
+                    }
+
+                    if (achei) {
+                        exibeTextoNaTela("CADASTRAMENTO MAL SUCEDIDO, ID JA EM USO NO MOMENTO");
+
+                    }
+                    else{
+                        listResponsaveisFinanceiros.add(novo);
+                        exibeTextoNaTela("CADASTRAMENTO BEM SUCEDIDO");
+                        achei = false;
+                    }
                 }
                 catch (Exception e){
                     exibeTextoNaTela("CADASTRAMENTO MAL SUCEDIDO PREENCHER TODOS CAMPOS");
@@ -194,6 +221,7 @@ public class FirstFragment extends Fragment {
 
                             achei = false;
                         }
+
                     } // for
 
                 }

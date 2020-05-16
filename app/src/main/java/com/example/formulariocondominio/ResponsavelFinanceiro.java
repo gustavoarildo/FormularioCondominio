@@ -16,6 +16,10 @@ public class ResponsavelFinanceiro {
 
     }
 
+    @Override public String toString() {
+        return "Id responsavel: " + id + " Nome: " + nome + " Telefone: " + telefone  + " Mensalidade: " + valorMensalidade  + " Debito total: " + debitoTotal;
+    }
+
     public int getId() {
         return id;
     }

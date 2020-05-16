@@ -46,7 +46,23 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_menu_consulta_codigo) {
+            return true;
+        }
+
+        if (id == R.id.action_menu_cadastrar) {
+            return true;
+        }
+
+        if (id == R.id.action_menu_listar_todos) {
+            return true;
+        }
+
+        if (id == R.id.action_menu_exclusao){
+            return true;
+        }
+
+        if (id == R.id.action_menu_alterar){
             return true;
         }
 

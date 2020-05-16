@@ -20,4 +20,8 @@
     <string name="digite_o_valor_da_mensalidade">Digite o valor da mensalidade</string>
     <string name="digite_o_debito_total">Digite o debito total</string>
     <string name="digite_o_telefone">Digite o telefone</string>
+    <string name="consult"> consult</string>
+    <string name="menu_cadastrar"> create</string>
+    <string name="delete"> delete</string>
+    <string name="edite"> edite</string>
 </resources>

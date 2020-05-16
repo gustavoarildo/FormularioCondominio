@@ -2,9 +2,37 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.formulariocondominio.MainActivity">
+
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/action_menu_consulta_codigo"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
+        android:title="menu_consulta_codigo"
         app:showAsAction="never" />
+
+    <item
+    android:id="@+id/action_menu_cadastrar"
+    android:orderInCategory="100"
+    android:title="menu_cadastrar"
+    app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_menu_listar_todos"
+        android:orderInCategory="100"
+        android:title="menu_listar_todos"
+        app:showAsAction="never" />
+
+
+    <item
+        android:id="@+id/action_menu_exclusao"
+        android:orderInCategory="100"
+        android:title="menu_exclusao"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_menu_alterar"
+        android:orderInCategory="100"
+        android:title="menu_alterar"
+        app:showAsAction="never" />
+
+
 </menu>

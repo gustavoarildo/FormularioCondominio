@@ -23,50 +23,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button_Cadastramento"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/cadastramento"
-        app:layout_constraintEnd_toEndOf="@+id/button_ConsultaPorCódigo"
-        app:layout_constraintTop_toBottomOf="@+id/button_ConsultaPorCódigo" />
-
-    <Button
-        android:id="@+id/button_ConsultaPorCódigo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="320dp"
-        android:text="@string/consulta_por_c_digo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editText_Identificacao"
-        app:layout_constraintTop_toBottomOf="@+id/button_first"
-        app:layout_constraintVertical_bias="0.06" />
-
-    <Button
-        android:id="@+id/button_ListarTodos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/listar_todos"
-        app:layout_constraintEnd_toEndOf="@+id/button_Cadastramento"
-        app:layout_constraintTop_toBottomOf="@+id/button_Cadastramento" />
-
-    <Button
-        android:id="@+id/button_Exclusão"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/exclus_o"
-        app:layout_constraintEnd_toEndOf="@+id/button_ListarTodos"
-        app:layout_constraintTop_toBottomOf="@+id/button_ListarTodos" />
-
-    <Button
-        android:id="@+id/button_AlteraçãoDeDados"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/altera_o_de_dados"
-        app:layout_constraintEnd_toEndOf="@+id/button_Exclusão"
-        app:layout_constraintTop_toBottomOf="@+id/button_Exclusão" />
-
     <EditText
         android:id="@+id/editText_Identificacao"
         android:layout_width="wrap_content"

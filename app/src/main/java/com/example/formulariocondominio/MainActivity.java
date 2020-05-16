@@ -43,11 +43,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        edtID = (EditText)findViewById(R.id.editText_Identificacao);
-        edtNOME = (EditText)findViewById(R.id.editText_Nome);
-        edtTELEFONE = (EditText)findViewById(R.id.editText_Telefone);
-        edtMENSALIDADE = (EditText)findViewById(R.id.editText_Mensalidade);
-        edtDEBITOTOTAL = (EditText)findViewById(R.id.editText_DebitoTotal);
+        verificaAtualizacoesCampoTexto();
     }
 
     @Override
@@ -66,12 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_menu_consulta_codigo) {
-
-            edtID = (EditText)findViewById(R.id.editText_Identificacao);
-            edtNOME = (EditText)findViewById(R.id.editText_Nome);
-            edtTELEFONE = (EditText)findViewById(R.id.editText_Telefone);
-            edtMENSALIDADE = (EditText)findViewById(R.id.editText_Mensalidade);
-            edtDEBITOTOTAL = (EditText)findViewById(R.id.editText_DebitoTotal);
+            verificaAtualizacoesCampoTexto();
 
             try {
                 boolean achei = false;
@@ -111,11 +102,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (id == R.id.action_menu_cadastrar) {
-            edtID = (EditText)findViewById(R.id.editText_Identificacao);
-            edtNOME = (EditText)findViewById(R.id.editText_Nome);
-            edtTELEFONE = (EditText)findViewById(R.id.editText_Telefone);
-            edtMENSALIDADE = (EditText)findViewById(R.id.editText_Mensalidade);
-            edtDEBITOTOTAL = (EditText)findViewById(R.id.editText_DebitoTotal);
+            verificaAtualizacoesCampoTexto();
 
 
             try {
@@ -160,12 +147,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (id == R.id.action_menu_exclusao){
-
-            edtID = (EditText)findViewById(R.id.editText_Identificacao);
-            edtNOME = (EditText)findViewById(R.id.editText_Nome);
-            edtTELEFONE = (EditText)findViewById(R.id.editText_Telefone);
-            edtMENSALIDADE = (EditText)findViewById(R.id.editText_Mensalidade);
-            edtDEBITOTOTAL = (EditText)findViewById(R.id.editText_DebitoTotal);
+            verificaAtualizacoesCampoTexto();
 
 
             try {
@@ -198,12 +180,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (id == R.id.action_menu_alterar){
-
-            edtID = (EditText)findViewById(R.id.editText_Identificacao);
-            edtNOME = (EditText)findViewById(R.id.editText_Nome);
-            edtTELEFONE = (EditText)findViewById(R.id.editText_Telefone);
-            edtMENSALIDADE = (EditText)findViewById(R.id.editText_Mensalidade);
-            edtDEBITOTOTAL = (EditText)findViewById(R.id.editText_DebitoTotal);
+            verificaAtualizacoesCampoTexto();
 
             try {
 
@@ -260,6 +237,14 @@ public class MainActivity extends AppCompatActivity {
 
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
+    }
+
+    public void verificaAtualizacoesCampoTexto(){
+        edtID = (EditText)findViewById(R.id.editText_Identificacao);
+        edtNOME = (EditText)findViewById(R.id.editText_Nome);
+        edtTELEFONE = (EditText)findViewById(R.id.editText_Telefone);
+        edtMENSALIDADE = (EditText)findViewById(R.id.editText_Mensalidade);
+        edtDEBITOTOTAL = (EditText)findViewById(R.id.editText_DebitoTotal);
     }
 
 

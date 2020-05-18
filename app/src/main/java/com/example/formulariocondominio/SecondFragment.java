@@ -1,11 +1,13 @@
 package com.example.formulariocondominio;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -33,14 +35,36 @@ public class SecondFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
+        //RECEBE ARRAYLIST
+        try {
+            Bundle data = getArguments();
+            if(data != null) {
+                ArrayList<ResponsavelFinanceiro> listResponsaveisFinanceiros = data.getParcelableArrayList("RESPONSAVEL");
 
-        ListView listViewResponsaveisFinanceiros = (ListView) view.findViewById(R.id.ListView_ListarTodos);
-        ArrayList<ResponsavelFinanceiro> listResponsaveisFinanceiros = todosOsResponsaveisFinanceiros();
-        ArrayAdapter<ResponsavelFinanceiro> adapter = new ArrayAdapter<ResponsavelFinanceiro>(Objects.requireNonNull(this.getContext()), android.R.layout.simple_list_item_1,listResponsaveisFinanceiros);
+                //ArrayList<ResponsavelFinanceiro> listResponsaveisFinanceiros = MainActivity.ExtraData.class.getClass().getMethods().getClass().getResource("listResponsaveisFinanceiros");
 
-        System.out.println(listResponsaveisFinanceiros.get(0).getNome());
+                // ArrayList<ResponsavelFinanceiro> listResponsaveisFinanceiros = getArguments().getParcelableArrayList ("RESPONSAVEL");//ok
 
-        listViewResponsaveisFinanceiros.setAdapter(adapter);
+
+                ListView listViewResponsaveisFinanceiros = (ListView) view.findViewById(R.id.ListView_ListarTodos);
+                //ArrayList<ResponsavelFinanceiro> listResponsaveisFinanceiros = todosOsResponsaveisFinanceiros();
+                ArrayAdapter<ResponsavelFinanceiro> adapter = new ArrayAdapter<ResponsavelFinanceiro>(Objects.requireNonNull(this.getContext()), android.R.layout.simple_list_item_1, listResponsaveisFinanceiros);
+
+                System.out.println(listResponsaveisFinanceiros.get(0).getNome());
+
+                listViewResponsaveisFinanceiros.setAdapter(adapter);
+
+            }
+
+
+
+        }
+        catch (Exception e)
+        {
+            //nao faz nada
+            exibeTextoNaTela("second deu erro");
+        }
+        //RECEBE ARRAYLIST
 
 
 
@@ -56,7 +80,7 @@ public class SecondFragment extends Fragment {
 
 
 
-
+/*
     private ArrayList<ResponsavelFinanceiro> todosOsResponsaveisFinanceiros() {
 
         return new ArrayList<>(Arrays.asList(
@@ -69,6 +93,17 @@ public class SecondFragment extends Fragment {
                         1000)
         ));
 
+    }
+
+ */
+
+    public void exibeTextoNaTela(String meuTexto){
+        Context context = getActivity().getApplicationContext();
+        CharSequence text = meuTexto;
+        int duration = Toast.LENGTH_SHORT;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
     }
 
 

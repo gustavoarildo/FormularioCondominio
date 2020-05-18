@@ -1,6 +1,9 @@
 package com.example.formulariocondominio;
 
-public class ResponsavelFinanceiro {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class ResponsavelFinanceiro implements Parcelable {
     private int id;
     private String nome;
     private int telefone;
@@ -15,6 +18,26 @@ public class ResponsavelFinanceiro {
         this.debitoTotal = debitoTotal;
 
     }
+
+    protected ResponsavelFinanceiro(Parcel in) {
+        id = in.readInt();
+        nome = in.readString();
+        telefone = in.readInt();
+        valorMensalidade = in.readDouble();
+        debitoTotal = in.readDouble();
+    }
+
+    public static final Creator<ResponsavelFinanceiro> CREATOR = new Creator<ResponsavelFinanceiro>() {
+        @Override
+        public ResponsavelFinanceiro createFromParcel(Parcel in) {
+            return new ResponsavelFinanceiro(in);
+        }
+
+        @Override
+        public ResponsavelFinanceiro[] newArray(int size) {
+            return new ResponsavelFinanceiro[size];
+        }
+    };
 
     @Override public String toString() {
         return "Id responsavel: " + id + " Nome: " + nome + " Telefone: " + telefone  + " Mensalidade: " + valorMensalidade  + " Debito total: " + debitoTotal;
@@ -58,5 +81,28 @@ public class ResponsavelFinanceiro {
 
     public void setDebitoTotal(double debitoTotal) {
         this.debitoTotal = debitoTotal;
+    }
+
+
+
+
+
+
+
+
+
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(nome);
+        dest.writeInt(telefone);
+        dest.writeDouble(valorMensalidade);
+        dest.writeDouble(debitoTotal);
     }
 }

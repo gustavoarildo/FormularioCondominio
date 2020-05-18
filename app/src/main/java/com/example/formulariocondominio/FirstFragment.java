@@ -31,6 +31,22 @@ public class FirstFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
+        SecondFragment secondFragment = new SecondFragment();//?NANI?
+
+
+
+        Bundle data = getArguments();
+        if(data != null) {
+            ArrayList<ResponsavelFinanceiro> listResponsaveisFinanceiros = data.getParcelableArrayList("RESPONSAVEL");
+
+            Bundle bundle = new Bundle();//ok
+            bundle.putParcelableArrayList("RESPONSAVEL", listResponsaveisFinanceiros);//ok
+            secondFragment.setArguments(bundle);//?okokokokokok
+        }
+
+
+
         view.findViewById(R.id.button_first).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

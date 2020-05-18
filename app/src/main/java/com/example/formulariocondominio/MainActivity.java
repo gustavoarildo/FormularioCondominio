@@ -1,6 +1,7 @@
 package com.example.formulariocondominio;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -8,7 +9,9 @@ import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentTransaction;
 
+import android.os.Parcelable;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,6 +23,9 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     ArrayList<ResponsavelFinanceiro> listResponsaveisFinanceiros = new ArrayList<ResponsavelFinanceiro>();
+
+    SecondFragment secondFragment = new SecondFragment();//?NANI?
+    FirstFragment firstFragment = new FirstFragment();//?
 
     EditText edtID;
     EditText edtNOME;
@@ -142,9 +148,44 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
 
-        if (id == R.id.action_menu_listar_todos) {
+        if (id == R.id.action_menu_listar_todos) {//ENVIA ARRAYLIST
+
+            try {
+                /*
+                SecondFragment secondFragment = new SecondFragment();
+                Bundle data = new Bundle();
+                Intent intent = null;
+                intent.putExtra("RESPONSAVEL", listResponsaveisFinanceiros);
+                data = getIntent().getExtras();
+                secondFragment.setArguments(data);
+
+                 */
+
+                //yourArrayList.add("test");
+               // yourArrayList.add("test2")
+                Bundle bundle = new Bundle();//ok
+                bundle.putParcelableArrayList("RESPONSAVEL", listResponsaveisFinanceiros);//ok
+                //SecondFragment secondFragment = new SecondFragment();//?
+                secondFragment.setArguments(bundle);//?okokokokokok
+                //FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();//????
+                //fragmentTransaction.add(R.id.SecondFragment, secondFragment);//????
+                //fragmentTransaction.commit();//ok?????????????????????
+
+
+                firstFragment.setArguments(bundle);//?okokokokokok
+
+
+                exibeTextoNaTela("setou a lista");
+            }
+            catch (Exception e)
+            {
+                //nao faz nada
+                exibeTextoNaTela("main deu erro");
+            }
+
+
             return true;
-        }
+        }//ENVIA ARRAYLIST
 
         if (id == R.id.action_menu_exclusao){
             verificaAtualizacoesCampoTexto();

@@ -2,6 +2,7 @@ package com.example.formulariocondominio;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -12,6 +13,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Parcelable;
+import java.io.Serializable;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,8 +26,9 @@ public class MainActivity extends AppCompatActivity {
 
     ArrayList<ResponsavelFinanceiro> listResponsaveisFinanceiros = new ArrayList<ResponsavelFinanceiro>();
 
-    SecondFragment secondFragment = new SecondFragment();//?NANI?
-    FirstFragment firstFragment = new FirstFragment();//?
+    //SecondFragment secondFragment = new SecondFragment();//?NANI?
+    //FirstFragment firstFragment = new FirstFragment();//?
+    //MainActivity mainActivity = new MainActivity();
 
     EditText edtID;
     EditText edtNOME;
@@ -50,6 +53,68 @@ public class MainActivity extends AppCompatActivity {
         });
 
         verificaAtualizacoesCampoTexto();
+
+
+        ResponsavelFinanceiro novo = new ResponsavelFinanceiro(
+                1,
+                "gu",
+                3713,
+                100,
+                1000
+        );
+        listResponsaveisFinanceiros.add(novo);
+
+
+        //FragmentTransaction fragmentTransaction;
+/*
+        Bundle bundle = new Bundle();//ok
+        bundle.putParcelableArrayList("RESPONSAVEL", listResponsaveisFinanceiros);//ok
+        SecondFragment secondFragment = new SecondFragment();//?NANI?
+        secondFragment.setArguments(bundle);//?okokokokokok
+
+ */
+
+        //fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        //getFragmentManager().beginTransaction()
+                //.add(R.id.container, new PlaceholderFragment()).commit();
+        ///fragmentTransaction = getSupportFragmentManager().findFragmentById(R.id.;
+        //ExampleFragment fragment = (ExampleFragment) getSupportFragmentManager().findFragmentById(R.id.example_fragment);
+        //fragmentTransaction.add(R.id.container, secondFragment);
+        //fragmentTransaction.commit();
+
+        //SharedPreferences pref = getApplicationContext().getSharedPreferences("DATA", MODE_PRIVATE);
+        //SharedPreferences.Editor editor = pref.edit();
+        //editor.putString("EDITEXT1", "string value");  // Salvando dados do seu editext
+        //editor.commit(); // confirmar e salvar seus dados para a SharedPreferences
+
+
+
+        if(listResponsaveisFinanceiros != null){
+
+            SecondFragment secondFragment = new SecondFragment();
+
+            Bundle bundle = new Bundle();
+
+
+
+            //put your ArrayList data in bundle
+
+            bundle.putSerializable("bundle_key",new ConnResp(listResponsaveisFinanceiros).getmlist());
+
+            secondFragment.setArguments(announcementBundle);
+
+        }
+
+
+
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+
+        ft.replace(R.id.comments_fragment, fragment);
+
+        ft.commit();
+
+
+
     }
 
     @Override
@@ -136,6 +201,24 @@ public class MainActivity extends AppCompatActivity {
                     listResponsaveisFinanceiros.add(novo);
                     exibeTextoNaTela("CADASTRAMENTO BEM SUCEDIDO");
                     achei = false;
+
+
+
+
+
+                    //MainActivity mainActivity = new MainActivity();
+                    //SecondFragment secondFragment = new SecondFragment();//?NANI?
+                    //FragmentTransaction fragmentTransaction;
+                   // Bundle bundle = new Bundle();//ok
+                   // bundle.putParcelableArrayList("RESPONSAVEL", listResponsaveisFinanceiros);//ok
+                    //secondFragment.setArguments(bundle);//?okokokokokok
+                    //fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                    //fragmentTransaction.add(R.id.FirstFragment, secondFragment);
+                    //fragmentTransaction.commit();
+
+
+
+
                 }
             }
             catch (Exception e){
@@ -163,16 +246,16 @@ public class MainActivity extends AppCompatActivity {
 
                 //yourArrayList.add("test");
                // yourArrayList.add("test2")
-                Bundle bundle = new Bundle();//ok
-                bundle.putParcelableArrayList("RESPONSAVEL", listResponsaveisFinanceiros);//ok
+               // Bundle bundle = new Bundle();//ok
+               // bundle.putParcelableArrayList("RESPONSAVEL", listResponsaveisFinanceiros);//ok
                 //SecondFragment secondFragment = new SecondFragment();//?
-                secondFragment.setArguments(bundle);//?okokokokokok
+                //secondFragment.setArguments(bundle);//?okokokokokok
                 //FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();//????
                 //fragmentTransaction.add(R.id.SecondFragment, secondFragment);//????
                 //fragmentTransaction.commit();//ok?????????????????????
 
 
-                firstFragment.setArguments(bundle);//?okokokokokok
+               // firstFragment.setArguments(bundle);//?okokokokokok
 
 
                 exibeTextoNaTela("setou a lista");

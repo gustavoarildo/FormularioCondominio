@@ -36,10 +36,32 @@ public class SecondFragment extends Fragment {
 
 
         //RECEBE ARRAYLIST
+        ArrayList<ResponsavelFinanceiro> listResponsaveisFinanceiros = null;
+        //ArrayList<ResponsavelFinanceiro> listResponsaveisFinanceiros = todosOsResponsaveisFinanceiros();
+        //listResponsaveisFinanceiros = todosOsResponsaveisFinanceiros();
+
+
+        /*
+        Bundle data = getArguments();
+        //Bundle data = getIntent().getExtras();
+        if(data != null) {
+            //ArrayList<ResponsavelFinanceiro> listResponsaveisFinanceiros = data.getParcelableArrayList("RESPONSAVEL");
+            listResponsaveisFinanceiros = data.getParcelableArrayList("RESPONSAVEL");
+        }
+        else
+        {
+            exibeTextoNaTela("Lista nao foi recebida");
+        }
+
+         */
+
+        //then get your ArrayList data in fragment
+
+        listResponsaveisFinanceiros = (ArrayList<ResponsavelFinanceiro>) getArguments().getSerializable("bundle_key");
+
+
         try {
-            Bundle data = getArguments();
-            if(data != null) {
-                ArrayList<ResponsavelFinanceiro> listResponsaveisFinanceiros = data.getParcelableArrayList("RESPONSAVEL");
+
 
                 //ArrayList<ResponsavelFinanceiro> listResponsaveisFinanceiros = MainActivity.ExtraData.class.getClass().getMethods().getClass().getResource("listResponsaveisFinanceiros");
 
@@ -54,7 +76,7 @@ public class SecondFragment extends Fragment {
 
                 listViewResponsaveisFinanceiros.setAdapter(adapter);
 
-            }
+
 
 
 
@@ -95,7 +117,7 @@ public class SecondFragment extends Fragment {
 
     }
 
- */
+ //*/
 
     public void exibeTextoNaTela(String meuTexto){
         Context context = getActivity().getApplicationContext();

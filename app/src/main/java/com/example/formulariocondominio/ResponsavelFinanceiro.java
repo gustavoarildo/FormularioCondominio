@@ -40,7 +40,7 @@ public class ResponsavelFinanceiro implements Parcelable {
     };
 
     @Override public String toString() {
-        return "Id responsavel: " + id + " Nome: " + nome + " Telefone: " + telefone  + " Mensalidade: " + valorMensalidade  + " Debito total: " + debitoTotal;
+        return "Id responsavel: " + id + " \nNome: " + nome + " \nTelefone: " + telefone  + " \nMensalidade: " + valorMensalidade  + " \nDebito total: " + debitoTotal;
     }
 
     public int getId() {

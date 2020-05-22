@@ -32,10 +32,10 @@ public class FirstFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-        SecondFragment secondFragment = new SecondFragment();//?NANI?
+        //final SecondFragment secondFragment = new SecondFragment();//?NANI?
 
 
-
+        /*
         Bundle data = getArguments();
         if(data != null) {
             ArrayList<ResponsavelFinanceiro> listResponsaveisFinanceiros = data.getParcelableArrayList("RESPONSAVEL");
@@ -45,11 +45,26 @@ public class FirstFragment extends Fragment {
             secondFragment.setArguments(bundle);//?okokokokokok
         }
 
+         */
+
 
 
         view.findViewById(R.id.button_first).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                /*
+                Bundle data = getArguments();
+                if(data != null) {
+                    ArrayList<ResponsavelFinanceiro> listResponsaveisFinanceiros = data.getParcelableArrayList("RESPONSAVEL");
+
+                    Bundle bundle = new Bundle();//ok
+                    bundle.putParcelableArrayList("RESPONSAVEL", listResponsaveisFinanceiros);//ok
+                    secondFragment.setArguments(bundle);//?okokokokokok
+                }
+
+                 */
+
                 NavHostFragment.findNavController(FirstFragment.this)
                         .navigate(R.id.action_FirstFragment_to_SecondFragment);
             }

@@ -38,7 +38,7 @@ public class SecondFragment extends Fragment {
         //RECEBE ARRAYLIST
         ArrayList<ResponsavelFinanceiro> listResponsaveisFinanceiros = null;
         //ArrayList<ResponsavelFinanceiro> listResponsaveisFinanceiros = todosOsResponsaveisFinanceiros();
-        //listResponsaveisFinanceiros = todosOsResponsaveisFinanceiros();
+        listResponsaveisFinanceiros = todosOsResponsaveisFinanceiros();
 
 
         /*
@@ -57,7 +57,7 @@ public class SecondFragment extends Fragment {
 
         //then get your ArrayList data in fragment
 
-        listResponsaveisFinanceiros = (ArrayList<ResponsavelFinanceiro>) getArguments().getSerializable("bundle_key");
+        //listResponsaveisFinanceiros = (ArrayList<ResponsavelFinanceiro>) getArguments().getSerializable("bundle_key");
 
 
         try {
@@ -102,7 +102,7 @@ public class SecondFragment extends Fragment {
 
 
 
-/*
+
     private ArrayList<ResponsavelFinanceiro> todosOsResponsaveisFinanceiros() {
 
         return new ArrayList<>(Arrays.asList(

@@ -87,11 +87,12 @@ public class MainActivity extends AppCompatActivity {
         //editor.putString("EDITEXT1", "string value");  // Salvando dados do seu editext
         //editor.commit(); // confirmar e salvar seus dados para a SharedPreferences
 
-
-
+/*
+        SecondFragment secondFragment = new SecondFragment();
+        //FirstFragment firstFragment = new FirstFragment();
         if(listResponsaveisFinanceiros != null){
 
-            SecondFragment secondFragment = new SecondFragment();
+
 
             Bundle bundle = new Bundle();
 
@@ -99,9 +100,10 @@ public class MainActivity extends AppCompatActivity {
 
             //put your ArrayList data in bundle
 
-            bundle.putSerializable("bundle_key",new ConnResp(listResponsaveisFinanceiros).getmlist());
+            bundle.putSerializable("bundle_key", listResponsaveisFinanceiros);
 
-            secondFragment.setArguments(announcementBundle);
+            secondFragment.setArguments(bundle);
+            //firstFragment.setArguments(bundle);
 
         }
 
@@ -109,9 +111,12 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 
-        ft.replace(R.id.comments_fragment, fragment);
+        ft.replace(R.id.nav_host_fragment, secondFragment);
+        //ft.replace(R.id.nav_host_fragment, firstFragment);
 
         ft.commit();
+
+ */
 
 
 

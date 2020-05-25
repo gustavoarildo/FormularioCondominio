@@ -21,6 +21,26 @@ public class ResponsavelFinanceiro implements Serializable {
 
     }
 
+    protected ResponsavelFinanceiro(Parcel in) {
+        id = in.readInt();
+        nome = in.readString();
+        telefone = in.readInt();
+        valorMensalidade = in.readDouble();
+        debitoTotal = in.readDouble();
+    }
+
+    public static final Parcelable.Creator<ResponsavelFinanceiro> CREATOR = new Parcelable.Creator<ResponsavelFinanceiro>() {
+        @Override
+        public ResponsavelFinanceiro createFromParcel(Parcel in) {
+            return new ResponsavelFinanceiro(in);
+        }
+
+        @Override
+        public ResponsavelFinanceiro[] newArray(int size) {
+            return new ResponsavelFinanceiro[size];
+        }
+    };
+
     @Override public String toString() {
         return "Id responsavel: " + id + " \nNome: " + nome + " \nTelefone: " + telefone  + " \nMensalidade: " + valorMensalidade  + " \nDebito total: " + debitoTotal;
     }
@@ -64,4 +84,5 @@ public class ResponsavelFinanceiro implements Serializable {
     public void setDebitoTotal(double debitoTotal) {
         this.debitoTotal = debitoTotal;
     }
+
 }

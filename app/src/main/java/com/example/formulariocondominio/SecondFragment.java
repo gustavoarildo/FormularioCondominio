@@ -35,60 +35,6 @@ public class SecondFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-        //RECEBE ARRAYLIST
-        ArrayList<ResponsavelFinanceiro> listResponsaveisFinanceiros = null;
-        //ArrayList<ResponsavelFinanceiro> listResponsaveisFinanceiros = todosOsResponsaveisFinanceiros();
-        listResponsaveisFinanceiros = todosOsResponsaveisFinanceiros();
-
-
-        /*
-        Bundle data = getArguments();
-        //Bundle data = getIntent().getExtras();
-        if(data != null) {
-            //ArrayList<ResponsavelFinanceiro> listResponsaveisFinanceiros = data.getParcelableArrayList("RESPONSAVEL");
-            listResponsaveisFinanceiros = data.getParcelableArrayList("RESPONSAVEL");
-        }
-        else
-        {
-            exibeTextoNaTela("Lista nao foi recebida");
-        }
-
-         */
-
-        //then get your ArrayList data in fragment
-
-        //listResponsaveisFinanceiros = (ArrayList<ResponsavelFinanceiro>) getArguments().getSerializable("bundle_key");
-
-
-        try {
-
-
-                //ArrayList<ResponsavelFinanceiro> listResponsaveisFinanceiros = MainActivity.ExtraData.class.getClass().getMethods().getClass().getResource("listResponsaveisFinanceiros");
-
-                // ArrayList<ResponsavelFinanceiro> listResponsaveisFinanceiros = getArguments().getParcelableArrayList ("RESPONSAVEL");//ok
-
-
-                ListView listViewResponsaveisFinanceiros = (ListView) view.findViewById(R.id.ListView_ListarTodos);
-                //ArrayList<ResponsavelFinanceiro> listResponsaveisFinanceiros = todosOsResponsaveisFinanceiros();
-                ArrayAdapter<ResponsavelFinanceiro> adapter = new ArrayAdapter<ResponsavelFinanceiro>(Objects.requireNonNull(this.getContext()), android.R.layout.simple_list_item_1, listResponsaveisFinanceiros);
-
-                System.out.println(listResponsaveisFinanceiros.get(0).getNome());
-
-                listViewResponsaveisFinanceiros.setAdapter(adapter);
-
-
-
-
-
-        }
-        catch (Exception e)
-        {
-            //nao faz nada
-            exibeTextoNaTela("second deu erro");
-        }
-        //RECEBE ARRAYLIST
-
-
 
 
         view.findViewById(R.id.button_second).setOnClickListener(new View.OnClickListener() {
@@ -102,31 +48,6 @@ public class SecondFragment extends Fragment {
 
 
 
-
-    private ArrayList<ResponsavelFinanceiro> todosOsResponsaveisFinanceiros() {
-
-        return new ArrayList<>(Arrays.asList(
-
-                new ResponsavelFinanceiro(
-                        1,
-                        "gu",
-                        3713,
-                        100,
-                        1000)
-        ));
-
-    }
-
- //*/
-
-    public void exibeTextoNaTela(String meuTexto){
-        Context context = getActivity().getApplicationContext();
-        CharSequence text = meuTexto;
-        int duration = Toast.LENGTH_SHORT;
-
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
-    }
 
 
 

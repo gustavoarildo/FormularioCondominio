@@ -26,9 +26,6 @@ public class MainActivity extends AppCompatActivity {
 
     ArrayList<ResponsavelFinanceiro> listResponsaveisFinanceiros = new ArrayList<ResponsavelFinanceiro>();
 
-    //SecondFragment secondFragment = new SecondFragment();//?NANI?
-    //FirstFragment firstFragment = new FirstFragment();//?
-    //MainActivity mainActivity = new MainActivity();
 
     EditText edtID;
     EditText edtNOME;
@@ -47,76 +44,69 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Voce precionou o botao de cadastramento", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+
+                verificaAtualizacoesCampoTexto();
+
+
+
+
+                try {
+                    ResponsavelFinanceiro novo = new ResponsavelFinanceiro(
+                            Integer.parseInt(edtID.getText().toString()),
+                            edtNOME.getText().toString(),
+                            Integer.parseInt(edtTELEFONE.getText().toString()),
+                            Double.parseDouble(edtMENSALIDADE.getText().toString()),
+                            Double.parseDouble(edtDEBITOTOTAL.getText().toString())
+                    );
+
+                    boolean achei = false;
+                    for (int i = 0; i < listResponsaveisFinanceiros.size(); i++) {
+                        ResponsavelFinanceiro rf = (ResponsavelFinanceiro) listResponsaveisFinanceiros.get(i);
+                        if (rf.getId() == (Integer.parseInt(edtID.getText().toString()))) {
+                            achei = true;
+                        }
+                    }
+
+                    if (achei) {
+                        exibeTextoNaTela("CADASTRAMENTO MAL SUCEDIDO, ID JA EM USO NO MOMENTO");
+
+                    }
+                    else{
+                        listResponsaveisFinanceiros.add(novo);
+                        exibeTextoNaTela("CADASTRAMENTO BEM SUCEDIDO");
+                        achei = false;
+
+
+                    }
+                }
+                catch (Exception e){
+                    exibeTextoNaTela("CADASTRAMENTO MAL SUCEDIDO PREENCHER TODOS CAMPOS");
+                }
+
+
+
+
             }
         });
 
-        verificaAtualizacoesCampoTexto();
 
-
-        ResponsavelFinanceiro novo = new ResponsavelFinanceiro(
-                1,
-                "gu",
-                3713,
-                100,
-                1000
-        );
-        listResponsaveisFinanceiros.add(novo);
-
-
-        //FragmentTransaction fragmentTransaction;
-/*
-        Bundle bundle = new Bundle();//ok
-        bundle.putParcelableArrayList("RESPONSAVEL", listResponsaveisFinanceiros);//ok
-        SecondFragment secondFragment = new SecondFragment();//?NANI?
-        secondFragment.setArguments(bundle);//?okokokokokok
-
- */
-
-        //fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        //getFragmentManager().beginTransaction()
-                //.add(R.id.container, new PlaceholderFragment()).commit();
-        ///fragmentTransaction = getSupportFragmentManager().findFragmentById(R.id.;
-        //ExampleFragment fragment = (ExampleFragment) getSupportFragmentManager().findFragmentById(R.id.example_fragment);
-        //fragmentTransaction.add(R.id.container, secondFragment);
-        //fragmentTransaction.commit();
-
-        //SharedPreferences pref = getApplicationContext().getSharedPreferences("DATA", MODE_PRIVATE);
-        //SharedPreferences.Editor editor = pref.edit();
-        //editor.putString("EDITEXT1", "string value");  // Salvando dados do seu editext
-        //editor.commit(); // confirmar e salvar seus dados para a SharedPreferences
-
-/*
-        SecondFragment secondFragment = new SecondFragment();
-        //FirstFragment firstFragment = new FirstFragment();
-        if(listResponsaveisFinanceiros != null){
-
-
-
-            Bundle bundle = new Bundle();
-
-
-
-            //put your ArrayList data in bundle
-
-            bundle.putSerializable("bundle_key", listResponsaveisFinanceiros);
-
-            secondFragment.setArguments(bundle);
-            //firstFragment.setArguments(bundle);
-
+        ArrayList<ResponsavelFinanceiro> listResponsaveisFinanceirosIntent = new ArrayList<ResponsavelFinanceiro>();
+        if (savedInstanceState == null) {
+            Bundle extras = getIntent().getExtras();
+            if(extras == null) {
+                listResponsaveisFinanceirosIntent= new ArrayList<ResponsavelFinanceiro>();
+            } else {
+                listResponsaveisFinanceirosIntent = (ArrayList<ResponsavelFinanceiro>) extras.getSerializable("LISTA");
+            }
+        } else {
+            listResponsaveisFinanceirosIntent = (ArrayList<ResponsavelFinanceiro>) savedInstanceState.getSerializable("LISTA");
         }
+        listResponsaveisFinanceiros = listResponsaveisFinanceirosIntent;
 
 
-
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-
-        ft.replace(R.id.nav_host_fragment, secondFragment);
-        //ft.replace(R.id.nav_host_fragment, firstFragment);
-
-        ft.commit();
-
- */
+        verificaAtualizacoesCampoTexto();
 
 
 
@@ -208,22 +198,6 @@ public class MainActivity extends AppCompatActivity {
                     achei = false;
 
 
-
-
-
-                    //MainActivity mainActivity = new MainActivity();
-                    //SecondFragment secondFragment = new SecondFragment();//?NANI?
-                    //FragmentTransaction fragmentTransaction;
-                   // Bundle bundle = new Bundle();//ok
-                   // bundle.putParcelableArrayList("RESPONSAVEL", listResponsaveisFinanceiros);//ok
-                    //secondFragment.setArguments(bundle);//?okokokokokok
-                    //fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                    //fragmentTransaction.add(R.id.FirstFragment, secondFragment);
-                    //fragmentTransaction.commit();
-
-
-
-
                 }
             }
             catch (Exception e){
@@ -239,31 +213,15 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_menu_listar_todos) {//ENVIA ARRAYLIST
 
             try {
-                /*
-                SecondFragment secondFragment = new SecondFragment();
-                Bundle data = new Bundle();
-                Intent intent = null;
-                intent.putExtra("RESPONSAVEL", listResponsaveisFinanceiros);
-                data = getIntent().getExtras();
-                secondFragment.setArguments(data);
-
-                 */
-
-                //yourArrayList.add("test");
-               // yourArrayList.add("test2")
-               // Bundle bundle = new Bundle();//ok
-               // bundle.putParcelableArrayList("RESPONSAVEL", listResponsaveisFinanceiros);//ok
-                //SecondFragment secondFragment = new SecondFragment();//?
-                //secondFragment.setArguments(bundle);//?okokokokokok
-                //FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();//????
-                //fragmentTransaction.add(R.id.SecondFragment, secondFragment);//????
-                //fragmentTransaction.commit();//ok?????????????????????
-
-
-               // firstFragment.setArguments(bundle);//?okokokokokok
-
 
                 exibeTextoNaTela("setou a lista");
+
+                //LISTAR TODOS VERSAO ACTIVIT ABAIXO
+                Intent i = new Intent(MainActivity.this, Main2Activity.class);
+                i.putExtra("LISTA", listResponsaveisFinanceiros);
+                startActivity(i);
+
+
             }
             catch (Exception e)
             {

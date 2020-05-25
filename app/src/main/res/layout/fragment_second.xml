@@ -18,9 +18,12 @@
         android:id="@+id/textView_second"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="10dp"
-        android:text="@string/hello_second_frag"
-        app:layout_constraintBottom_toBottomOf="@+id/button_second"
-        app:layout_constraintEnd_toStartOf="@+id/button_second" />
+        android:layout_marginBottom="300dp"
+        android:text="@string/autores_gustavo_arildo_e_leonardo_da_silva_ntrabalho_3_pdm"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

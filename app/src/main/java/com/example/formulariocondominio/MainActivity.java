@@ -69,50 +69,6 @@ public class MainActivity extends AppCompatActivity {
                     exibeTextoNaTela("You must put somenting in the text field");
                 }
 
-
-
-
-
-/*
-
-                try {
-                    ResponsavelFinanceiro novo = new ResponsavelFinanceiro(
-                            Integer.parseInt(edtID.getText().toString()),
-                            edtNOME.getText().toString(),
-                            Integer.parseInt(edtTELEFONE.getText().toString()),
-                            Double.parseDouble(edtMENSALIDADE.getText().toString()),
-                            Double.parseDouble(edtDEBITOTOTAL.getText().toString())
-                    );
-
-                    boolean achei = false;
-                    for (int i = 0; i < listResponsaveisFinanceiros.size(); i++) {
-                        ResponsavelFinanceiro rf = (ResponsavelFinanceiro) listResponsaveisFinanceiros.get(i);
-                        if (rf.getId() == (Integer.parseInt(edtID.getText().toString()))) {
-                            achei = true;
-                        }
-                    }
-
-                    if (achei) {
-                        exibeTextoNaTela("CADASTRAMENTO MAL SUCEDIDO, ID JA EM USO NO MOMENTO");
-
-                    }
-                    else{
-                        listResponsaveisFinanceiros.add(novo);
-                        exibeTextoNaTela("CADASTRAMENTO BEM SUCEDIDO");
-                        achei = false;
-
-
-                    }
-                }
-                catch (Exception e){
-                    exibeTextoNaTela("CADASTRAMENTO MAL SUCEDIDO PREENCHER TODOS CAMPOS");
-                }
-
-
-
- */
-
-
             }
         });
 
@@ -178,44 +134,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-/*
-            try {
-                boolean achei = false;
-                boolean idlistado = false;
-                for (int i = 0; i < listResponsaveisFinanceiros.size(); i++) {
-                    ResponsavelFinanceiro rf = (ResponsavelFinanceiro) listResponsaveisFinanceiros.get(i);
-                    if (rf.getId() == (Integer.parseInt(edtID.getText().toString()))  ) {
-                        achei = true;
-                    }
-
-                    if (achei) {
-                        edtNOME.setText(rf.getNome());
-                        edtTELEFONE.setText(String.valueOf(rf.getTelefone()));
-                        edtMENSALIDADE.setText( String.valueOf(rf.getValorMensalidade()));
-                        edtDEBITOTOTAL.setText( String.valueOf(rf.getDebitoTotal()));
-
-                        achei = false;
-                        idlistado = true;
-                    }
-                } // for
-                if(listResponsaveisFinanceiros.size()>0 && idlistado == true) {
-                    exibeTextoNaTela("CONSULTA POR CODIGO BEM SUCEDIDA, DADOS EXIBIDOS NOS CAMPOS");
-                }
-                else{
-                    exibeTextoNaTela("LISTA NÃO POSSUI ESSE ID");
-                }
-            }
-            catch (Exception e){
-                exibeTextoNaTela("CONSULTA POR CODIGO MAL SUCEDIDA, PREENCHA O CAMPO ID COM O ID DO ITEM PROCURADO");
-            }
-
- */
-
-
-
-
-
             return true;
         }
 
@@ -235,70 +153,21 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 exibeTextoNaTela("You must put somenting in the text field");
             }
-/*
-            try {
-                ResponsavelFinanceiro novo = new ResponsavelFinanceiro(
-                        Integer.parseInt(edtID.getText().toString()),
-                        edtNOME.getText().toString(),
-                        Integer.parseInt(edtTELEFONE.getText().toString()),
-                        Double.parseDouble(edtMENSALIDADE.getText().toString()),
-                        Double.parseDouble(edtDEBITOTOTAL.getText().toString())
-                );
-
-                boolean achei = false;
-                for (int i = 0; i < listResponsaveisFinanceiros.size(); i++) {
-                    ResponsavelFinanceiro rf = (ResponsavelFinanceiro) listResponsaveisFinanceiros.get(i);
-                    if (rf.getId() == (Integer.parseInt(edtID.getText().toString()))) {
-                        achei = true;
-                    }
-                }
-
-                if (achei) {
-                    exibeTextoNaTela("CADASTRAMENTO MAL SUCEDIDO, ID JA EM USO NO MOMENTO");
-
-                }
-                else{
-                    listResponsaveisFinanceiros.add(novo);
-                    exibeTextoNaTela("CADASTRAMENTO BEM SUCEDIDO");
-                    achei = false;
-
-
-                }
-            }
-            catch (Exception e){
-                exibeTextoNaTela("CADASTRAMENTO MAL SUCEDIDO PREENCHER TODOS CAMPOS");
-            }
-
-
-
- */
 
 
             return true;
         }
 
-        if (id == R.id.action_menu_listar_todos) {//ENVIA ARRAYLIST
-
-            try {
+        if (id == R.id.action_menu_listar_todos) {//ENVIA ARRAYLIST//Envia o utilizador para proxima tela
 
                 exibeTextoNaTela("setou a lista");
 
                 //LISTAR TODOS VERSAO ACTIVIT ABAIXO
                 Intent i = new Intent(MainActivity.this, Main2Activity.class);
-                //i.putExtra("LISTA", listResponsaveisFinanceiros);
                 startActivity(i);
 
-
-            }
-            catch (Exception e)
-            {
-                //nao faz nada
-                exibeTextoNaTela("main deu erro");
-            }
-
-
             return true;
-        }//ENVIA ARRAYLIST
+        }//ENVIA ARRAYLIST//Envia o utilizador para proxima tela
 
         if (id == R.id.action_menu_exclusao){
             verificaAtualizacoesCampoTexto();
@@ -317,34 +186,6 @@ public class MainActivity extends AppCompatActivity {
             }else {
                 exibeTextoNaTela("ID nao encontrado");
             }
-
-/*
-            try {
-
-                boolean achei = false;
-                for (int i = 0; i < listResponsaveisFinanceiros.size(); i++) {
-                    ResponsavelFinanceiro rf = (ResponsavelFinanceiro) listResponsaveisFinanceiros.get(i);
-                    if (rf.getId() == (Integer.parseInt(edtID.getText().toString()))  ) {
-                        achei = true;
-                    }
-
-                    if (achei) {
-                        //rf
-                        listResponsaveisFinanceiros.remove(i);
-                        exibeTextoNaTela("EXCLUSÃO POR CODIGO BEM SUCEDIDA, DADOS DELETADOS");
-
-                        achei = false;
-                    }
-                } // for
-
-            }
-            catch (Exception e){
-                exibeTextoNaTela("EXCLUSÃO POR CODIGO MAL SUCEDIDA, PREENCHA O CAMPO ID COM O ID DO ITEM PROCURADO");
-            }
-
- */
-
-
 
 
             return true;
@@ -382,56 +223,6 @@ public class MainActivity extends AppCompatActivity {
             }else {
                 exibeTextoNaTela("ID nao encontrado");
             }
-
-
-
-
-
-
-
-            /*
-            try {
-
-                boolean achei = false;
-                for (int i = 0; i < listResponsaveisFinanceiros.size(); i++) {
-                    ResponsavelFinanceiro rf = (ResponsavelFinanceiro) listResponsaveisFinanceiros.get(i);
-                    if (rf.getId() == (Integer.parseInt(edtID.getText().toString()))  ) {
-                        achei = true;
-                    }
-
-                    if (achei) {
-                        //rf
-                        ResponsavelFinanceiro novo = new ResponsavelFinanceiro(
-                                rf.getId(),
-                                edtNOME.getText().toString(),
-                                Integer.parseInt(edtTELEFONE.getText().toString()),
-                                Double.parseDouble(edtMENSALIDADE.getText().toString()),
-                                Double.parseDouble(edtDEBITOTOTAL.getText().toString())
-                        );
-
-
-
-
-                        listResponsaveisFinanceiros.set(i, novo);
-                        exibeTextoNaTela("ALTERACAO POR CODIGO BEM SUCEDIDA, DADOS MODIFICADOS, ID NAO PODE SER MODIFICADO");
-
-                        achei = false;
-                    }
-
-                } // for
-
-            }
-            catch (Exception e){
-                exibeTextoNaTela("ALTERACAO POR CODIGO MAL SUCEDIDA, PREENCHA O CAMPO ID COM O ID DO ITEM PROCURADO");
-            }
-
-             */
-
-
-
-
-
-
 
             return true;
         }

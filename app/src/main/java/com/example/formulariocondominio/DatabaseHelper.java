@@ -7,8 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import androidx.annotation.Nullable;
-
 public class DatabaseHelper  extends SQLiteOpenHelper {
 
     private static final String TAG = "DatabaseHelper";
@@ -70,10 +68,8 @@ public class DatabaseHelper  extends SQLiteOpenHelper {
 
     public boolean deleteData(String id){
         SQLiteDatabase db = this.getWritableDatabase();
-        //String query = "DELETE FROM " + TABLE_NAME + " WHERE ( ID == " + id + " ) ";
         int result = db.delete(TABLE_NAME," ID " + " =" + id, null);
-        //Cursor data = db.rawQuery(query,null);
-        //return data;
+
         if(result == -1){
             return  false;
         } else {
@@ -90,10 +86,8 @@ public class DatabaseHelper  extends SQLiteOpenHelper {
         contentValues.put(COL4, newEntry3);
         contentValues.put(COL5, newEntry4);
 
-        //String query = "DELETE FROM " + TABLE_NAME + " WHERE ( ID == " + id + " ) ";
         int result = db.update(TABLE_NAME,contentValues," ID " + " =" + id, null);
-        //Cursor data = db.rawQuery(query,null);
-        //return data;
+
         if(result == -1){
             return  false;
         } else {

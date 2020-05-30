@@ -81,4 +81,24 @@ public class DatabaseHelper  extends SQLiteOpenHelper {
         }
     }
 
+    public boolean alteraData(String id, String newEntry, String newEntry2, String newEntry3, String newEntry4){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL2, newEntry);
+        contentValues.put(COL3, newEntry2);
+        contentValues.put(COL4, newEntry3);
+        contentValues.put(COL5, newEntry4);
+
+        //String query = "DELETE FROM " + TABLE_NAME + " WHERE ( ID == " + id + " ) ";
+        int result = db.update(TABLE_NAME,contentValues," ID " + " =" + id, null);
+        //Cursor data = db.rawQuery(query,null);
+        //return data;
+        if(result == -1){
+            return  false;
+        } else {
+            return  true;
+        }
+    }
+
 }

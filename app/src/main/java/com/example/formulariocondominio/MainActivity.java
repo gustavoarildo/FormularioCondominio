@@ -353,6 +353,43 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_menu_alterar){
             verificaAtualizacoesCampoTexto();
 
+
+
+            boolean encontrado = false;
+            Cursor data = mDatabaseHelper.getData();
+            while(data.moveToNext()){
+                String[] colunas =  {data.getString(0),data.getString(1),data.getString(2),data.getString(3),data.getString(4)};
+                if(colunas[0].equals(edtID.getText().toString())){
+                    encontrado = true;
+                    String newEntry = edtNOME.getText().toString();
+                    String newEntry2 = edtTELEFONE.getText().toString();
+                    String newEntry3 = edtMENSALIDADE.getText().toString();
+                    String newEntry4 = edtDEBITOTOTAL.getText().toString();
+                    if(edtNOME.length() != 0 && edtTELEFONE.length() != 0 && edtMENSALIDADE.length() != 0 && edtDEBITOTOTAL.length() != 0){
+                        alteraData(colunas[0], newEntry, newEntry2, newEntry3, newEntry4);
+                        edtNOME.setText("");
+                        edtTELEFONE.setText("");
+                        edtMENSALIDADE.setText("");
+                        edtDEBITOTOTAL.setText("");
+                    } else {
+                        exibeTextoNaTela("You must put somenting in the text field");
+                    }
+
+                }
+            }
+            if (encontrado){
+                exibeTextoNaTela("ID encontrado no banco");
+            }else {
+                exibeTextoNaTela("ID nao encontrado");
+            }
+
+
+
+
+
+
+
+            /*
             try {
 
                 boolean achei = false;
@@ -388,6 +425,8 @@ public class MainActivity extends AppCompatActivity {
                 exibeTextoNaTela("ALTERACAO POR CODIGO MAL SUCEDIDA, PREENCHA O CAMPO ID COM O ID DO ITEM PROCURADO");
             }
 
+             */
+
 
 
 
@@ -415,6 +454,16 @@ public class MainActivity extends AppCompatActivity {
 
         if(excluiData){
             exibeTextoNaTela("Data Sucessfully excluded");
+        } else{
+            exibeTextoNaTela("Somenting went wrong");
+        }
+    }
+
+    public void alteraData(String id, String newEntry, String newEntry2, String newEntry3, String newEntry4){
+        boolean modificaData = mDatabaseHelper.alteraData(id, newEntry, newEntry2, newEntry3, newEntry4);
+
+        if(modificaData){
+            exibeTextoNaTela("Data Sucessfully changed");
         } else{
             exibeTextoNaTela("Somenting went wrong");
         }

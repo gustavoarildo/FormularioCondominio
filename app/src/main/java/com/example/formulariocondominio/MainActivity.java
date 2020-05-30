@@ -55,9 +55,15 @@ public class MainActivity extends AppCompatActivity {
 
 
                 String newEntry = edtNOME.getText().toString();
-                if(edtNOME.length() != 0){
-                    AddData(newEntry);
+                String newEntry2 = edtTELEFONE.getText().toString();
+                String newEntry3 = edtMENSALIDADE.getText().toString();
+                String newEntry4 = edtDEBITOTOTAL.getText().toString();
+                if(edtNOME.length() != 0 && edtTELEFONE.length() != 0 && edtMENSALIDADE.length() != 0 && edtDEBITOTOTAL.length() != 0){
+                    AddData(newEntry, newEntry2, newEntry3, newEntry4);
                     edtNOME.setText("");
+                    edtTELEFONE.setText("");
+                    edtMENSALIDADE.setText("");
+                    edtDEBITOTOTAL.setText("");
                 } else {
                     exibeTextoNaTela("You must put somenting in the text field");
                 }
@@ -335,8 +341,8 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void AddData(String newEntry){
-        boolean insertData = mDatabaseHelper.addData(newEntry);
+    public void AddData(String newEntry, String newEntry2, String newEntry3, String newEntry4){
+        boolean insertData = mDatabaseHelper.addData(newEntry, newEntry2, newEntry3, newEntry4);
 
         if(insertData){
             exibeTextoNaTela("Data Sucessfully Inserted");

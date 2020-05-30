@@ -13,9 +13,12 @@ public class DatabaseHelper  extends SQLiteOpenHelper {
 
     private static final String TAG = "DatabaseHelper";
 
-    private static final String TABLE_NAME = "people_table";
-    private static final String COL1 = "ID";
-    private static final String COL2 = "name";
+    private static final String TABLE_NAME = "responsavel_table";
+    private static final String COL1 = "id";
+    private static final String COL2 = "nome";
+    private static final String COL3 = "telefone";
+    private static final String COL4 = "valorMensalidade";
+    private static final String COL5 =  "debitoTotal";
 
 
     public DatabaseHelper(Context context) {
@@ -26,7 +29,10 @@ public class DatabaseHelper  extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String createTable = "CREATE TABLE " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COL2 +" TEXT)";
+                COL2 +" TEXT, "+
+                COL3 +" TEXT, "+
+                COL4 +" TEXT, "+
+                COL5 +" TEXT "+ ")";
         db.execSQL(createTable);
     }
 
@@ -37,12 +43,15 @@ public class DatabaseHelper  extends SQLiteOpenHelper {
 
     }
 
-    public boolean addData(String item){
+    public boolean addData(String item, String item2, String item3, String item4){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL2, item);
+        contentValues.put(COL3, item2);
+        contentValues.put(COL4, item3);
+        contentValues.put(COL5, item4);
 
-        Log.d(TAG, "addData: Adding " + item + " to " + TABLE_NAME);
+        Log.d(TAG, "addData: Adding " + item +"and " + item2 +"and " + item3+ "and " + item4+ " to " + TABLE_NAME);
         Long result = db.insert(TABLE_NAME,null,contentValues);
         //if data as inserted incorrectly it will return -1
         if(result == -1){

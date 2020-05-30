@@ -29,4 +29,5 @@
     <string name="tela_de_inicio">Tela de inicio</string>
     <string name="autores_gustavo_arildo_e_leonardo_da_silva">Autores: Gustavo Arildo e Leonardo da Silva</string>
     <string name="autores_gustavo_arildo_e_leonardo_da_silva_ntrabalho_3_pdm">Autores Gustavo Arildo e Leonardo da Silva \nTrabalho 3 PDM</string>
+    <string name="id_cadastrato_automaticamente">ID é cadastrato automaticamente</string>
 </resources>

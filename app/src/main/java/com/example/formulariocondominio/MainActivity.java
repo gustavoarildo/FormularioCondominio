@@ -303,7 +303,22 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_menu_exclusao){
             verificaAtualizacoesCampoTexto();
 
+            boolean encontrado = false;
+            Cursor data = mDatabaseHelper.getData();
+            while(data.moveToNext()){
+                String[] colunas =  {data.getString(0),data.getString(1),data.getString(2),data.getString(3),data.getString(4)};
+                if(colunas[0].equals(edtID.getText().toString())){
+                    encontrado = true;
+                    deleteData(colunas[0]);
+                }
+            }
+            if (encontrado){
+                exibeTextoNaTela("ID encontrado no banco");
+            }else {
+                exibeTextoNaTela("ID nao encontrado");
+            }
 
+/*
             try {
 
                 boolean achei = false;
@@ -326,6 +341,8 @@ public class MainActivity extends AppCompatActivity {
             catch (Exception e){
                 exibeTextoNaTela("EXCLUSÃO POR CODIGO MAL SUCEDIDA, PREENCHA O CAMPO ID COM O ID DO ITEM PROCURADO");
             }
+
+ */
 
 
 
@@ -388,6 +405,16 @@ public class MainActivity extends AppCompatActivity {
 
         if(insertData){
             exibeTextoNaTela("Data Sucessfully Inserted");
+        } else{
+            exibeTextoNaTela("Somenting went wrong");
+        }
+    }
+
+    public void deleteData(String newEntry){
+        boolean excluiData = mDatabaseHelper.deleteData(newEntry);
+
+        if(excluiData){
+            exibeTextoNaTela("Data Sucessfully excluded");
         } else{
             exibeTextoNaTela("Somenting went wrong");
         }

@@ -2,7 +2,7 @@ package com.example.formulariocondominio;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
+
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -10,10 +10,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.FragmentTransaction;
 
-import android.os.Parcelable;
-import java.io.Serializable;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,6 +20,10 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+    private  static  final  String TAG = "MainActivity";
+
+    DatabaseHelper mDatabaseHelper;
+
 
     ArrayList<ResponsavelFinanceiro> listResponsaveisFinanceiros = new ArrayList<ResponsavelFinanceiro>();
 
@@ -48,9 +49,21 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
 
                 verificaAtualizacoesCampoTexto();
+                mDatabaseHelper = new DatabaseHelper(MainActivity.this);
+
+                String newEntry = edtNOME.getText().toString();
+                if(edtNOME.length() != 0){
+                    AddData(newEntry);
+                    edtNOME.setText("");
+                } else {
+                    exibeTextoNaTela("You must put somenting in the text field");
+                }
 
 
 
+
+
+/*
 
                 try {
                     ResponsavelFinanceiro novo = new ResponsavelFinanceiro(
@@ -86,6 +99,8 @@ public class MainActivity extends AppCompatActivity {
                 }
 
 
+
+ */
 
 
             }
@@ -218,7 +233,7 @@ public class MainActivity extends AppCompatActivity {
 
                 //LISTAR TODOS VERSAO ACTIVIT ABAIXO
                 Intent i = new Intent(MainActivity.this, Main2Activity.class);
-                i.putExtra("LISTA", listResponsaveisFinanceiros);
+                //i.putExtra("LISTA", listResponsaveisFinanceiros);
                 startActivity(i);
 
 
@@ -314,6 +329,16 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void AddData(String newEntry){
+        boolean insertData = mDatabaseHelper.addData(newEntry);
+
+        if(insertData){
+            exibeTextoNaTela("Data Sucessfully Inserted");
+        } else{
+            exibeTextoNaTela("Somenting went wrong");
+        }
     }
 
 

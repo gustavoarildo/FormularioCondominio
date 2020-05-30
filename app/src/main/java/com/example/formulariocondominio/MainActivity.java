@@ -20,6 +20,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+
     private  static  final  String TAG = "MainActivity";
 
     DatabaseHelper mDatabaseHelper;
@@ -42,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = findViewById(R.id.fab);
+        verificaAtualizacoesCampoTexto();
+        mDatabaseHelper = new DatabaseHelper(MainActivity.this);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -49,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
 
                 verificaAtualizacoesCampoTexto();
-                mDatabaseHelper = new DatabaseHelper(MainActivity.this);
+
 
                 String newEntry = edtNOME.getText().toString();
                 if(edtNOME.length() != 0){
@@ -184,8 +187,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (id == R.id.action_menu_cadastrar) {
             verificaAtualizacoesCampoTexto();
-
-
+/*
             try {
                 ResponsavelFinanceiro novo = new ResponsavelFinanceiro(
                         Integer.parseInt(edtID.getText().toString()),
@@ -220,6 +222,8 @@ public class MainActivity extends AppCompatActivity {
             }
 
 
+
+ */
 
 
             return true;

@@ -3,6 +3,7 @@ package com.example.formulariocondominio;
 import android.content.Context;
 import android.content.Intent;
 
+import android.database.Cursor;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -154,6 +155,31 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_menu_consulta_codigo) {
             verificaAtualizacoesCampoTexto();
 
+
+
+            boolean encontrado = false;
+            Cursor data = mDatabaseHelper.getData();
+            while(data.moveToNext()){
+                String[] colunas =  {data.getString(0),data.getString(1),data.getString(2),data.getString(3),data.getString(4)};
+                if(colunas[0].equals(edtID.getText().toString())){
+                    encontrado = true;
+                    edtNOME.setText(colunas[1]);
+                    edtTELEFONE.setText(colunas[2]);
+                    edtMENSALIDADE.setText(colunas[3]);
+                    edtDEBITOTOTAL.setText(colunas[4]);
+                }
+            }
+            if (encontrado){
+                exibeTextoNaTela("ID encontrado no banco");
+            }else {
+                exibeTextoNaTela("ID nao encontrado");
+            }
+
+
+
+
+
+/*
             try {
                 boolean achei = false;
                 boolean idlistado = false;
@@ -184,6 +210,8 @@ public class MainActivity extends AppCompatActivity {
                 exibeTextoNaTela("CONSULTA POR CODIGO MAL SUCEDIDA, PREENCHA O CAMPO ID COM O ID DO ITEM PROCURADO");
             }
 
+ */
+
 
 
 
@@ -193,6 +221,20 @@ public class MainActivity extends AppCompatActivity {
 
         if (id == R.id.action_menu_cadastrar) {
             verificaAtualizacoesCampoTexto();
+
+            String newEntry = edtNOME.getText().toString();
+            String newEntry2 = edtTELEFONE.getText().toString();
+            String newEntry3 = edtMENSALIDADE.getText().toString();
+            String newEntry4 = edtDEBITOTOTAL.getText().toString();
+            if(edtNOME.length() != 0 && edtTELEFONE.length() != 0 && edtMENSALIDADE.length() != 0 && edtDEBITOTOTAL.length() != 0){
+                AddData(newEntry, newEntry2, newEntry3, newEntry4);
+                edtNOME.setText("");
+                edtTELEFONE.setText("");
+                edtMENSALIDADE.setText("");
+                edtDEBITOTOTAL.setText("");
+            } else {
+                exibeTextoNaTela("You must put somenting in the text field");
+            }
 /*
             try {
                 ResponsavelFinanceiro novo = new ResponsavelFinanceiro(

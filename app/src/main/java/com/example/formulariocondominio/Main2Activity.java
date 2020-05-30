@@ -122,12 +122,14 @@ public class Main2Activity extends AppCompatActivity {
 
 
  */
-
+/*
             exibeTextoNaTela(colunas[0]);
             exibeTextoNaTela(colunas[1]);
             exibeTextoNaTela(colunas[2]);
             exibeTextoNaTela(colunas[3]);
             exibeTextoNaTela(colunas[4]);
+
+ */
 
         }
         //create the List adapter and set the adapter
@@ -136,7 +138,7 @@ public class Main2Activity extends AppCompatActivity {
         mListView.setAdapter(adapter);
     }
 
-
+/*
     public void exibeTextoNaTela(String meuTexto){
         Context context = getApplicationContext();
         CharSequence text = meuTexto;
@@ -145,4 +147,6 @@ public class Main2Activity extends AppCompatActivity {
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
     }
+
+ */
 }
